@@ -1,6 +1,6 @@
-# airport_board
+# Kyiv_airport
 
-# [Kyiv_Airport] https://snazzy-sopapillas-9fd5f7.netlify.app/
+# [Kyiv_Airport]https://snazzy-sopapillas-9fd5f7.netlify.app/
 
 stack:
 
