@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+  border-spacing: 0;
+  border: none;
+}
+
+.search {
+  width: 740px;
+  padding-top: 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: auto;
+  margin-bottom: 38px;
+}
+
+.search_title {
+  // text-transform: uppercase;
+  // font-size: 70px;
+  // line-height: 80px;
+  // font-weight: 100;
+  display: flex;
+  width: 740px;
+  line-height: 80px;
+  font-size: 60px;
+  font-weight: 300;
+  color: #2f2f2f;
+  margin: auto;
+}
+
+.search__flights-form {
+  position: relative;
+  display: block;
+  margin-left: 0px;
+}
+
+.search__icon {
+  position: absolute;
+  height: 80px;
+  width: 70px;
+  background-color: #fff;
+  background-image: url(https://my-airport-board.netlify.app/eef111a7754a8824d1a3.png);
+  background-position: center;
+  background-size: 48px;
+  background-repeat: no-repeat;
+}
+
+.search__input {
+  width: 473px;
+  height: 80px;
+  border: none;
+  color: #000;
+  margin-left: -3px;
+  font-size: 24px;
+  padding-left: 75px;
+  padding-right: 220px;
+  display: block;
+  border: none;
+  width: 100%;
+  border-radius: 0 90px 0 0;
+}
+
+.search__button {
+  text-transform: uppercase;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-weight: 700;
+  width: 200px;
+  background: #1eb7ee;
+  color: #fff;
+  font-size: 20px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.7s ease-in-out;
+  border-radius: 0 80px 0 0;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.search__button:hover {
+  border-radius: 0 30px 0 0;
+  cursor: pointer;
+}

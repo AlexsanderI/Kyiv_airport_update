@@ -1,0 +1,20 @@
+.header {
+  height: 92px;
+  position: fixed;
+  width: 100%;
+  background-color: #1eb7ee;
+  z-index: 99;
+  box-shadow: 0 5px 10px rgb(37 40 41 / 30%);
+}
+
+.header-wrapper {
+  height: 110px;
+  width: 180px;
+  background-image: url(https://my-airport-board.netlify.app/9ce3efaf0bcc24f0ed82.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: -9px;
+  margin-left: 120px;
+  cursor: pointer;
+}

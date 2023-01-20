@@ -1,0 +1,12 @@
+.noFlight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  min-height: 300px;
+}
+
+.noFlight__text {
+  font-weight: 700;
+  font-size: 60px;
+}
