@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSearchFlightDateQuery } from '../../redux/flightDate.api';
 import FlightBoardTableArrivals from './FlightBoardTableArrivals/FlightBoardTableArrivals';
-import NoFlight from '../noFlight/noFlight';
+import NoFlight from '../noFlight/NoFlight';
 import moment from 'moment';
 import { useState, useEffect } from 'react';
 import { setFlightDate } from '../../redux/flightDateSlice';
