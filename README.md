@@ -1,5 +1,3 @@
-# Kyiv_airport
-
 # [Kyiv Airport](https://snazzy-sopapillas-9fd5f7.netlify.app/)
 
 stack:
@@ -14,8 +12,9 @@ api sikorsky airport Kyiv
 
 #### Available Scripts
 
-npm run build - production
-npm start - development
+To build project use command: `npm run build`
+
+To run project use command: `npm start`
 
 ### Author
 
