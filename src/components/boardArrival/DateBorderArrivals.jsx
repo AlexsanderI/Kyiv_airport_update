@@ -1,21 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useSearchFlightDateQuery } from '../../redux/flightDate.api';
 import FlightBoardTableArrivals from './FlightBoardTableArrivals/FlightBoardTableArrivals';
 import NoFlight from '../noFlight/NoFlight';
+import SomethingWrong from '../somethingWrong/somethingWrong';
+import Spin from '../spin/spin';
 import moment from 'moment';
-import { useState, useEffect } from 'react';
 import { setFlightDate } from '../../redux/flightDateSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './date.scss';
-import { useSelector } from 'react-redux';
 
 const DateBorderArrivals = () => {
   let createdDate = moment(new Date()).format();
 
-  let today = moment(createdDate).format('DD/MM');
   let tomorrow = moment(createdDate).add(1, 'd');
 
-  let yestarday = moment(createdDate).subtract(1, 'd');
+  let yesterday = moment(createdDate).subtract(1, 'd');
 
   let saveDate = useSelector(state => state.flightDate.flightDate);
 
@@ -64,10 +63,6 @@ const DateBorderArrivals = () => {
     dispatch(setFlightDate(currentDate));
   };
 
-  console.log(calendarFormat);
-
-  console.log(yestarday);
-
   return (
     <div className="board__date">
       <div className="date__select">
@@ -83,10 +78,7 @@ const DateBorderArrivals = () => {
         ></input>
         <div className="date__icon">
           <div className="date__icon-text">
-            {
-              // moment(data).format('DD/MM')
-              [calendarFormat.split('-')[0], calendarFormat.split('-')[1]].join('/')
-            }
+            {[calendarFormat.split('-')[0], calendarFormat.split('-')[1]].join('/')}
           </div>
           <div className="date__icon-png"></div>
         </div>
@@ -94,12 +86,12 @@ const DateBorderArrivals = () => {
           <div
             className={`date__days-box ${activeButton === 'yestarday' ? 'active' : ''}`}
             onClick={() => {
-              handleChangeDate(yestarday);
-              handleClick('yestarday');
+              handleChangeDate(yesterday);
+              handleClick('yesterday');
             }}
           >
-            <div className="date__days-num">{yestarday.format('DD/MM')}</div>
-            <div className="date__days-text">Yestarday</div>
+            <div className="date__days-num">{yesterday.format('DD/MM')}</div>
+            <div className="date__days-text">Yesterday</div>
           </div>
           <div
             className={`date__days-box ${activeButton === 'today' ? 'active' : ''}`}
@@ -126,7 +118,11 @@ const DateBorderArrivals = () => {
 
       {/* {showFlights} */}
 
-      {searchData !== null ? (
+      {isLoading ? (
+        <Spin spin="arr" />
+      ) : isError ? (
+        <SomethingWrong />
+      ) : searchData !== null ? (
         searchData.length !== 0 ? (
           <FlightBoardTableArrivals data={searchData} />
         ) : (

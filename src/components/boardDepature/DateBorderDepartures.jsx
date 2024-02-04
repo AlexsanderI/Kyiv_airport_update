@@ -1,7 +1,9 @@
 import React from 'react';
 import { useSearchFlightDateQuery } from '../../redux/flightDate.api';
-import FlightBoardTable from './FlightBoardTableDeparture/FlightBoardTableDeparture';
+import FlightBoardTableDeparture from './FlightBoardTableDeparture/FlightBoardTableDeparture';
+import SomethingWrong from '../somethingWrong/somethingWrong';
 import NoFlight from '../noFlight/NoFlight';
+import Spin from '../spin/spin';
 import moment from 'moment';
 import { useState, useEffect } from 'react';
 import { setFlightDate } from '../../redux/flightDateSlice';
@@ -12,7 +14,7 @@ import { useSelector } from 'react-redux';
 const DateBorderDepartures = () => {
   let createdDate = moment(new Date()).format();
   let tomorrow = moment(createdDate).add(1, 'd');
-  let yestarday = moment(createdDate).subtract(1, 'd');
+  let yesterday = moment(createdDate).subtract(1, 'd');
 
   let saveDate = useSelector(state => state.flightDate.flightDate);
 
@@ -38,7 +40,6 @@ const DateBorderDepartures = () => {
 
   useEffect(() => {
     setCalendarFormat(saveDate);
-    // console.log(data);
 
     const departure = data
       ? data.body.departure
@@ -62,16 +63,6 @@ const DateBorderDepartures = () => {
     dispatch(setFlightDate(currentDate));
   };
 
-  let showFlights = '';
-
-  if (searchData) {
-    showFlights = searchData.length !== 0 ? <FlightBoardTable data={searchData} /> : <NoFlight />;
-  }
-
-  if (!searchData) return null;
-
-  // console.log(1111111);
-
   return (
     <div className="board__date">
       <div className="date__select">
@@ -93,14 +84,14 @@ const DateBorderDepartures = () => {
         </div>
         <div className="date__days">
           <div
-            className={`date__days-box ${activeButton === 'yestarday' ? 'active' : ''}`}
+            className={`date__days-box ${activeButton === 'yesterday' ? 'active' : ''}`}
             onClick={() => {
-              handleChangeDate(yestarday);
-              handleClick('yestarday');
+              handleChangeDate(yesterday);
+              handleClick('yesterday');
             }}
           >
-            <div className="date__days-num">{yestarday.format('DD/MM')}</div>
-            <div className="date__days-text">Yestarday</div>
+            <div className="date__days-num">{yesterday.format('DD/MM')}</div>
+            <div className="date__days-text">yesterday</div>
           </div>
           <div
             className={`date__days-box ${activeButton === 'today' ? 'active' : ''}`}
@@ -125,9 +116,33 @@ const DateBorderDepartures = () => {
         </div>
       </div>
       {/* {showFlights} */}
-      {searchData !== null ? (
+      {/* {searchData !== null ? (
         searchData.length !== 0 ? (
-          <FlightBoardTable data={searchData} />
+          <FlightBoardTableDeparture data={searchData} />
+        ) : (
+          <NoFlight />
+        )
+      ) : (
+        ''
+      )} */}
+      {/* {isError ? (
+        <SomethingWrong />
+      ) : searchData !== null ? (
+        searchData.length !== 0 ? (
+          <FlightBoardTableDeparture data={searchData} />
+        ) : (
+          <NoFlight />
+        )
+      ) : (
+        ''
+      )} */}
+      {isLoading ? (
+        <Spin spin="dep" />
+      ) : isError ? (
+        <SomethingWrong />
+      ) : searchData !== null ? (
+        searchData.length !== 0 ? (
+          <FlightBoardTableDeparture data={searchData} />
         ) : (
           <NoFlight />
         )
@@ -135,7 +150,7 @@ const DateBorderDepartures = () => {
         ''
       )}
       {/* {searchData && searchData.length !== 0 ? (
-        <FlightBoardTable data={searchData} />
+        <FlightBoardTableDeparture data={searchData} />
       ) : (
         <NoFlight />
       )} */}
