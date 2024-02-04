@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSearchFlightDateQuery } from '../../redux/flightDate.api';
 import FlightBoardTableDeparture from './FlightBoardTableDeparture/FlightBoardTableDeparture';
-import SomethingWrong from '../somethingWrong/somethingWrong';
+import SomethingWrong from '../somethingWrong/SomethingWrong';
 import NoFlight from '../noFlight/NoFlight';
 import Spin from '../spin/Spin';
 import moment from 'moment';

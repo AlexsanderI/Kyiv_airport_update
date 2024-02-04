@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useSearchFlightDateQuery } from '../../redux/flightDate.api';
 import FlightBoardTableArrivals from './FlightBoardTableArrivals/FlightBoardTableArrivals';
 import NoFlight from '../noFlight/NoFlight';
-import SomethingWrong from '../somethingWrong/somethingWrong';
+import SomethingWrong from '../somethingWrong/SomethingWrong';
 import Spin from '../spin/Spin';
 import moment from 'moment';
 import { setFlightDate } from '../../redux/flightDateSlice';
