@@ -2,7 +2,7 @@ import React from 'react';
 import './flightBoardTableDeparture.scss';
 import moment from 'moment';
 
-const FlightBoardTable = ({ data }) => {
+const FlightBoardTableDeparture = ({ data }) => {
   {
     return (
       <table className="styled-table">
@@ -50,4 +50,4 @@ const FlightBoardTable = ({ data }) => {
   }
 };
 
-export default FlightBoardTable;
+export default FlightBoardTableDeparture;
